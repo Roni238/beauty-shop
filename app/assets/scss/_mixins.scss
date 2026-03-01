@@ -1,0 +1,8 @@
+@mixin container{
+  margin-inline: auto;
+  max-width: 1217px;
+
+  @media(max-width: 1216px){
+    padding-inline: 20px;
+  }
+}
