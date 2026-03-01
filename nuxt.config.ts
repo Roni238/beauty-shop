@@ -1,7 +1,14 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'Roni238',
+      repo: 'beauty-shop',
+      branch: 'main'
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {
