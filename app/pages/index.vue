@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import type { Post } from "@/types/post.types"
-
-const { data: posts } = await useFetch<Post[]>(
-  `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/`,{default: () => []}
+const { data: articles } = await useAsyncData('articles', () => 
+  queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
-
 import { usePagination } from '@/composables/usePagination';
 const { 
   currentPage, 
@@ -12,18 +9,22 @@ const {
   nextPage,
   goToPage,
   visiblePages 
-} = usePagination(posts, 8, 5);
+} = usePagination(articles, 4, 5);
 
-// обработки ошибок на макете небыло как и лоадеров, по этому не добавил
-// поинтер на артикле сделал, но снизу появляется read more который выглядит как ссылка
-// <a (артикл)> <a>Read more</a> </a> - не валид, так что переход оставил только по ссылке появляющийся при ховере 
+const getArticleId = (path: string) => {
+  if (!path) return ''
+  
+  return path
+    .replace('articles/articles/', '')
+    .replace('.json', '')
+}
 </script>
 
 <template>
   <section class="articles" aria-labelledby="articles-heading">
     <h1 id="articles-heading">Articles</h1>
     <div class="articles__grid">
-      <article class="article" v-for="post in paginatedPosts" :key="post.id" :title="post.title">
+      <article class="article" v-for="post in paginatedPosts" :key="post.id" :title="post.preview">
         <NuxtImg 
           class="article__image" 
           :src="post.image" 
@@ -33,8 +34,8 @@ const {
           width="280"
           height="280"
           loading="lazy"/>
-        <h3 class="article__title">{{ post.preview }}</h3>
-        <NuxtLink class="article__link" :to="`/article/${post.id}`" :aria-label="`Read more about ${post.title}`">Read more</NuxtLink>
+        <h3 class="article__title">{{ post.title }}</h3>
+        <NuxtLink class="article__link" :to="`/articles/${getArticleId(post.id)}`" :aria-label="`Read more about ${post.title}`">Read more</NuxtLink>
       </article>
     </div>
 

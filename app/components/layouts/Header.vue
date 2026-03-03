@@ -10,10 +10,6 @@
             <NuxtLink class="header__nav-link" to="/">About</NuxtLink>
         </nav>
 
-        <button class="header__lang-btn" aria-label="Switch language">
-            <IconsEnLang/>
-        </button>
-
         <button class="header__cta-btn">Let’s work</button>
     </header>
 </template>

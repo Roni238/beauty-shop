@@ -21,8 +21,7 @@ export function usePagination<T>(
       currentPage.value++
     }
   }
-
-  //на артиклах не понял появистя пред кнопка при пагинации или её и не должно быть, на всякий пусть будет метод
+  
   const prevPage = () => {
     if (currentPage.value > 1) {
       currentPage.value--
