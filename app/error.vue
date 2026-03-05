@@ -44,17 +44,15 @@ const handleError = () => clearError({ redirect: '/' })
   max-width: 600px;
 }
 
-/* Заголовок: Крупный, жирный, черный текст */
 .error-title {
-  font-family: 'Manrope', 'Inter', sans-serif; /* Похож на шрифт в макете */
+  font-family: 'Manrope', 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 80px; /* Очень крупный для акцента */
+  font-size: 80px;
   margin: 0 0 20px 0;
   line-height: 1.1;
   color: #000000;
 }
 
-/* Основной текст: Тонкий, черный, с хорошим межстрочным интервалом */
 .error-message {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -64,28 +62,25 @@ const handleError = () => clearError({ redirect: '/' })
   color: #000000;
 }
 
-/* Кнопка: Скругленный черный прямоугольник с белым текстом */
+
 .error-button {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 16px;
   color: #FFFFFF;
   background-color: #000000;
   border: none;
-  border-radius: 50px; /* Полное скругление */
+  border-radius: 50px;
   padding: 15px 35px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-transform: capitalize; /* Как "Let's work" в хедере */
+  text-transform: capitalize;
 }
 
-/* Эффект при наведении на кнопку (используем акцентный розовый) */
 .error-button:hover {
-  background-color: #F8D1D1; /* Пастельно-розовый цвет пудры из макета */
-  color: #A34A64; /* Темно-розовый текст */
+  background-color: #F8D1D1;
+  color: #A34A64;
 }
 
-/* Декоративные точки в стиле UI Kit макета */
 .error-visual {
   display: flex;
   justify-content: center;

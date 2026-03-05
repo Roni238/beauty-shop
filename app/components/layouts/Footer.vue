@@ -1,146 +1,329 @@
 <template>
     <footer class="footer">
-        <div class="footer__container">
-
-            <div>
-                <p>Is there a project?</p>
-                <p class="footer__lets-work">Let’s work together</p>
+        <div class="footer__top">
+            <div class="footer__brand">
+                <IconsLogo class="footer__logo"/>
+                <p class="footer__tagline">French Haute Cosmétique since 1920</p>
             </div>
-
-            <ul class="footer__info">
-                <li class="footer__info-li">
-                    <p>For all questions</p>
-                    <a>+7 (920) 278—00—68</a>
-                    <a href="">qtim@agency.com</a>
-                </li>
-                
-                <li class="footer__info-li">
-                    <p>Office in Russia</p>
-                    <address>139 Ruben Station Lake Drew, NM 52678</address>
-                    <a href="https://t.me/s/qtim_pro">
-                        <IconsTg/>
-                    </a>
-                </li>
-                
-                <li class="footer__info-li">
-                    <p>Office in Dubai</p>
-                    <address>139 Ruben Station Lake Drew, NM 52678</address>
-                    <a href="https://t.me/s/qtim_pro">
-                        <IconsTg/>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="footer__bottom-panel bottom-panel">
-            <div class="bottom-panel__links-container">
-                <a href="/">Facebook</a>
-                <a href="/">Instagram</a>
-                <a href="/">Telegram</a>
-            </div>
-
-            <button class="bottom-panel__cta-btn">
-                <p>Go</p>
-            </button>
             
-
-            <div class="bottom-panel__links-container">
-                <a href="/">Behance</a>
-                <a href="/">Linkedn</a>
-                <a href="/">Privacy Policy</a>
+            <div class="footer__nav-grid">
+                <div class="footer__nav-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><NuxtLink to="/">Blog</NuxtLink></li>
+                        <li><NuxtLink to="/">Products</NuxtLink></li>
+                        <li><NuxtLink to="/">Skincare Guide</NuxtLink></li>
+                        <li><NuxtLink to="/">Ingredients</NuxtLink></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__nav-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><NuxtLink to="/">Our Story</NuxtLink></li>
+                        <li><NuxtLink to="/">Heritage</NuxtLink></li>
+                        <li><NuxtLink to="/">Sustainability</NuxtLink></li>
+                        <li><NuxtLink to="/">Careers</NuxtLink></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__nav-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><NuxtLink to="/">Contact Us</NuxtLink></li>
+                        <li><NuxtLink to="/">FAQ</NuxtLink></li>
+                        <li><NuxtLink to="/">Shipping</NuxtLink></li>
+                        <li><NuxtLink to="/">Returns</NuxtLink></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        </div>
-        
-        
 
+        <div class="footer__contact">
+            <div class="footer__contact-info">
+                <h4>Contact</h4>
+                <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                <p><a href="mailto:contact@payot.com">contact@payot.com</a></p>
+                <div class="footer__social">
+                    <a href="#" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Pinterest">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+                            <path d="M12 12v6"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer__newsletter">
+                <h4>Stay Connected</h4>
+                <p>Subscribe for exclusive offers and beauty tips</p>
+                <form class="footer__subscribe-form">
+                    <input type="email" placeholder="Your email" />
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer__bottom bottom-panel">
+            <div class="bottom-panel__legal">
+                <p>&copy; 2024 Payot. All rights reserved.</p>
+                <div class="bottom-panel__links">
+                    <a href="/">Privacy Policy</a>
+                    <a href="/">Terms of Service</a>
+                    <a href="/">Cookie Policy</a>
+                </div>
+            </div>
+            
+            <div class="bottom-panel__made-with">
+                <p>Made with ❤️ in Paris</p>
+            </div>
+        </div>
     </footer>
 </template>
 
 <style lang="scss" scoped>
-    .footer{
-        background-color: $pink-color;
-        padding-top: 140px;
-        height: 900px;
-        overflow: hidden;
+    .footer {
+        background-color: #FAF8FB;
+        padding-top: 100px;
 
-        &__lets-work{
-            font-size: 112px;
-            max-width: 464px;
-            margin-top: 56px;
-            text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 10px;
-        }
-
-        &__container{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto auto;
-            gap: 273px 0px;
+        &__top {
             @include container;
-        }
-
-        &__info{
-            max-width: 152px;
             display: grid;
-            gap: 36px;
-            margin: 75px 232px 0px auto;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid #E8E8E8;
+
+            @media(max-width: 1024px) {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
         }
 
-        &__info-li{
-            list-style: none;
+        &__brand {
+            padding-right: 40px;
+        }
 
-            p, a, address{
-                line-height: 120%;
-                display: block;
+        &__logo {
+            width: 120px;
+            margin-bottom: 24px;
+        }
+
+        &__tagline {
+            font-size: 18px;
+            color: $gray-2-color;
+            line-height: 1.5;
+        }
+
+        &__nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+
+            @media(max-width: 768px) {
+                grid-template-columns: 1fr;
             }
-            p{
-                margin-bottom: 12px;
+        }
+
+        &__nav-column {
+            h4 {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 24px;
+                color: $black-color;
             }
-            address{
-                margin-bottom: 8px;
-                font-style: normal;
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
             }
+
+            li {
+                margin-bottom: 16px;
+
+                a {
+                    color: $gray-3-color;
+                    font-size: 16px;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $pink-color;
+                    }
+                }
+            }
+        }
+
+        &__contact {
+            @include container;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 80px 0;
+            border-bottom: 1px solid #E8E8E8;
+
+            @media(max-width: 1024px) {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        &__contact-info {
+            h4 {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 24px;
+            }
+
+            p {
+                margin-bottom: 16px;
+                font-size: 18px;
+                color: $gray-3-color;
+
+                a {
+                    color: $black-color;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $pink-color;
+                    }
+                }
+            }
+        }
+
+        &__social {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+
+            a {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #E8E8E8;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &:hover {
+                    border-color: $pink-color;
+                    background-color: $pink-color;
+                    
+                    svg {
+                        stroke: $white-color;
+                    }
+                }
+            }
+        }
+
+        &__newsletter {
+            h4 {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 16px;
+            }
+
+            p {
+                font-size: 16px;
+                color: $gray-3-color;
+                margin-bottom: 24px;
+            }
+        }
+
+        &__subscribe-form {
+            display: flex;
+            gap: 12px;
+
+            input {
+                flex: 1;
+                padding: 16px 24px;
+                border: 1px solid #E8E8E8;
+                border-radius: 999px;
+                font-family: $main-font;
+                font-size: 16px;
+
+                &:focus {
+                    outline: none;
+                    border-color: $pink-color;
+                }
+            }
+
+            button {
+                padding: 16px 40px;
+                background-color: $black-color;
+                color: $white-color;
+                border: none;
+                border-radius: 999px;
+                font-size: 16px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: $pink-color;
+                }
+            }
+        }
+
+        &__bottom {
+            @include container;
+            padding: 40px 0;
         }
     }
 
-    .bottom-panel{
+    .bottom-panel {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        grid-column: 1 / span 2;
-        width: 100%;
-        position: relative;
+        align-items: center;
 
-        &__links-container{
+        &__legal {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 40px;
 
-            a{
-                border-bottom: 1px solid $black-color;
+            p {
+                font-size: 14px;
+                color: $gray-2-color;
             }
         }
 
-        &__cta-btn{
-            height: 358px;
-            width: 358px;
-            background-color: $black-color;
-            border-radius: 50%;
-            color: $gray-1-color;
-            border: none;
-            position: absolute;
-            left: 50%;
-            top: -149px;
-            transform: translateX(-50%);
-            font-size: 32px;
-            transition: transform 0.2s ease;
+        &__links {
+            display: flex;
+            gap: 32px;
 
-            &:hover{
-                transform: translateX(-50%) scale(1.2);
+            a {
+                font-size: 14px;
+                color: $gray-2-color;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: $pink-color;
+                }
             }
+        }
 
-            p{
-                margin-bottom: 30px;
+        &__made-with {
+            p {
+                font-size: 14px;
+                color: $gray-2-color;
             }
         }
     }

@@ -4,20 +4,19 @@
       <h1 class="article-page__title"> {{ article?.title }} </h1>
 
       <NuxtImg 
-          class="article-page__image"
-          :src="article?.image" 
-          :alt="article?.title || 'Post image'"
-          placeholder="/default-image.webp"
-          fallback="/default-image.webp"
-          width="1216"
-          height="700"
-          loading="lazy"/>
+        class="article-page__image"
+        :src="article?.image" 
+        :alt="article?.title || 'Post image'"
+        placeholder="/default-image.webp"
+        fallback="/default-image.webp"
+        width="1216"
+        height="700"
+        loading="lazy"/>
 
-          <div class="article-page__text">
-            <p class="article-page__about">About</p>
-
-            <h4 class="article-page__discription">{{ article?.description }}</h4>
-          </div>
+        <div class="article-page__text">
+          <p class="article-page__about">About</p>
+          <h4 class="article-page__discription">{{ article?.description }}</h4>
+        </div>
     </article>
 </template>
 

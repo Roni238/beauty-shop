@@ -10,6 +10,6 @@
 
 <style lang="scss" soped>
 .main{
-  margin-block: 120px 80px;
+  margin-bottom: 80px;
 }
 </style>

@@ -1,8 +1,43 @@
-@mixin container{
-  margin-inline: auto;
-  max-width: 1217px;
+@use 'variables' as *;
 
-  @media(max-width: 1216px){
-    padding-inline: 20px;
+@mixin tablet($breakpoint: $tablet-breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin laptop($breakpoint: $laptop-breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop($breakpoint: $desktop-breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin tablet-ori($ori) {
+  @media (min-width: $tablet-breakpoint) and (max-width: $laptop-breakpoint) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin container(
+  $mobile: $mobile-breakpoint,
+  $laptop: $laptop-breakpoint,
+  $desktop: $desktop-breakpoint
+) {
+  margin: auto;
+  width: $mobile;
+  height: 100%;
+  padding-inline: $mobile-container-padding;
+  box-sizing: border-box;
+
+  @include laptop {
+    max-width: $laptop;
+  }
+  @include desktop {
+    max-width: $desktop;
   }
 }
