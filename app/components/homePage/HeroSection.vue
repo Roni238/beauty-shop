@@ -7,23 +7,24 @@
         <div class="hero__content">
         <h1 class="hero__title">
             <span class="hero__title-sub">Welcome to</span>
-            Payot Beauty Blog
+            Payot Beauty
         </h1>
         <p class="hero__subtitle">Discover the art of French skincare and timeless beauty secrets since 1920</p>
-        <div class="hero__buttons">
-            <button class="hero__btn hero__btn--primary">Explore Articles</button>
-            <button class="hero__btn hero__btn--secondary">Our Story</button>
+        <div class="hero__links">
+          <NuxtLink class="hero__link hero__link--primary" to="#articles">Explore Articles</NuxtLink>
+          <NuxtLink class="hero__link hero__link--secondary" to="#about">Our Story</NuxtLink>
         </div>
         </div>
-
-        <img src="/Frame-7586-1.png" alt="Payot beauty products" class="hero__image" />
+<!-- https://i.pinimg.com/736x/ab/50/8d/ab508d1926b7424d78d48b4af70ee479.jpg -->
+ <!-- https://i.pinimg.com/736x/cf/6f/c3/cf6fc3c159c49f95af88753c99198705.jpg -->
+        <img src="/bunner.jpg" alt="Payot beauty products" class="hero__image" />
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
   .hero {
-    background: linear-gradient(135deg, #FFF5F7 0%, #F8E8F0 100%);
+    background: $pink-gr;
 
     &__container {
       display: flex;
@@ -49,24 +50,21 @@
 
       &-sub {
         display: block;
-        font-size: 28px;
+        font-size: clamp(1.5rem, 3vw, 1.7rem);
         color: $pink-color;
-
-        @include tablet {
-          font-size: 32px;
-        }
       }
     }
 
     &__subtitle {
       font-size: 18px;
       color: $gray-2-color;
-      line-height: 1.4;
-      margin-bottom: 32px;
+      
+      margin-bottom: 18px;
       max-width: 500px;
 
       @include tablet {
         font-size: 24px;
+        line-height: 1.4;
         margin-bottom: 40px;
       }
 
@@ -75,17 +73,25 @@
       }
     }
 
-    &__buttons {
+    &__links {
       display: flex;
       gap: 24px;
     }
 
-    &__btn {
-      border-radius: 999px;
+    &__link {
+      border-radius: 16px;
       font-size: 18px;
       font-weight: 500;
       transition: all 0.3s ease;
       border: 2px solid transparent;
+      padding: 12px 28px;
+
+      @include tablet {
+        padding: 16px 32px;
+      }
+      @include laptop {
+        padding: 20px 48px;
+      }
 
       &--primary {
         background-color: $black-color;

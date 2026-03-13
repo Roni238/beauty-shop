@@ -15,7 +15,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: $main-font;
-  line-height: 100%;
+
 }
 
 body {
@@ -29,6 +29,7 @@ a{
 }
 
 button{
+  border: none;
   cursor: pointer;
   padding: 12px 28px;
 
