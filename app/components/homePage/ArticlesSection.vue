@@ -2,11 +2,13 @@
 import { usePagination } from '@/composables/usePagination';
 
 const { data: articles } = await useAsyncData('articles', () => 
-  queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
+  queryCollection('articles').select('id', 'title', 'price', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
 const itemsPerPage = ref(4)
-itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+onMounted(() => {
+  itemsPerPage.value = window.innerWidth >= 1280 ? 4 : window.innerWidth >= 640 ? 2 : 1
+})
 
 const { 
   currentPage, 
@@ -33,7 +35,7 @@ const getArticleId = (path: string) => {
       <p class="articles__subtitle">Expert advice, beauty tips, and skincare innovations</p>
     </div>
     <div class="articles__grid">
-      <article class="article" v-for="post in paginatedPosts" :key="post.id" :title="post.preview">
+      <article class="article" v-for="post in paginatedPosts" :key="post.id" >
         <NuxtImg 
           class="article__image" 
           :src="post.image" 
@@ -42,9 +44,13 @@ const getArticleId = (path: string) => {
           fallback="/default-image.webp"
           width="280"
           height="280"
+          format="webp"
           loading="lazy"/>
-        <h3 class="article__title">{{ post.title }}</h3>
-        <NuxtLink class="article__link" :to="`/articles/${getArticleId(post.id)}`" :aria-label="`Read more about ${post.title}`">Read more</NuxtLink>
+          
+        <NuxtLink :to="`/articles/${getArticleId(post.id)}`" >
+          <h3 class="article__title">{{ post.title }}</h3>
+          <p class="article__price">{{ post.price || 0.69}} $</p>
+        </NuxtLink>
       </article>
     </div>
 
@@ -66,15 +72,14 @@ const getArticleId = (path: string) => {
 
 <style lang="scss" scoped>
   .articles{
-    margin-bottom: 140px;
-    padding-top: 40px;
+    padding-block: 40px;
 
     @include tablet {
-      padding-top: 80px;
+      padding-block: 80px;
     }
 
     @include laptop {
-      padding-top: 120px;
+      padding-block: 120px;
     }
 
     &__container{
@@ -106,11 +111,12 @@ const getArticleId = (path: string) => {
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 40px;
       width: 100%;
-      margin-top: 59px;
+      margin-top: 16px;
       justify-content: center;
       
       @include tablet {
         grid-template-columns: repeat(2, auto);
+        margin-top: 59px;
       }
       
       @include laptop {
@@ -125,19 +131,15 @@ const getArticleId = (path: string) => {
     transition: transform 0.2s ease;
     margin-inline: auto;
     
-    &:hover{
-      transform: translateY(-20px);
-
-      .article__link{
-        opacity: 1;
-      }
-    }
-    
     &__image{
       height: 280px;
       width: 280px;
       object-fit: cover;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
+
+      @include tablet{
+        margin-bottom: 24px;
+      }
     }
 
     &__title{
@@ -148,19 +150,17 @@ const getArticleId = (path: string) => {
       }
     }
 
-    &__link{
-      font-size: 18px;
+    &__price{
+      font-size: clamp(16px, 2vw, 20px);
       color: $pink-color;
-      opacity: 0;
-      margin-top: 12px;
-
-      @include tablet {
-        font-size: 24px;
-      }
     }
     
     &__pagination{
-      margin-top: 32px;
+      margin-top: 16px;
+
+      @include tablet{
+        margin-top: 32px;
+      }
     }
   }
   
@@ -169,15 +169,23 @@ const getArticleId = (path: string) => {
     display: flex;
     gap: 16px;
 
-    &__page{
-      height: 56px;
-      width: 56px;
-      border: none;
+    button{
+      height: 40px;
+      width: 40px;
       border-radius: 12px;
+      padding: 0;
+
+      @include tablet{
+        height: 56px;
+        width: 56px;
+      }
+    }
+
+    &__page{
+      border: none;
       background-color: $gray-1-color;
       color: $black-color;
       font-size: 14px;
-      padding: 0;
 
       @include tablet {
         font-size: 16px;
@@ -195,12 +203,8 @@ const getArticleId = (path: string) => {
 
     &__next-btn{
       background: none;
-      height: 56px;
-      width: 56px;
       border: 1px solid #E8E8E8;
-      border-radius: 12px;
       transition: background-color 0.2s ease;
-      padding: 0;
 
       &:hover{
         background-color: #E8E8E8;
