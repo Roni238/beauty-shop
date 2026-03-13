@@ -5,15 +5,15 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'price', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
-// const itemsPerPage = ref(4)
+const itemsPerPage = ref(4) // Значение по умолчанию
 
-const isDesktop = useMediaQuery('(min-width: 1280px)')
-const isMobile = useMediaQuery('(min-width: 640px)')
-
-const itemsPerPage = computed(() => {
-  if (isDesktop.value) return 4
-  if (isMobile.value) return 2
-  return 1
+onMounted(() => {
+  if (process.client) {
+    itemsPerPage.value = window.innerWidth >= 1280 ? 8 
+      : window.innerWidth >= 768 ? 4 
+      : window.innerWidth >= 640 ? 2 
+      : 1
+  }
 })
 
 // itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
