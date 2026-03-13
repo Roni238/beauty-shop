@@ -5,13 +5,12 @@
         </NuxtLink>
 
         <nav class="header__nav">
-            <NuxtLink class="header__nav-link" to="/">Blog</NuxtLink>
-            <NuxtLink class="header__nav-link" to="/">Products</NuxtLink>
-            <NuxtLink class="header__nav-link" to="/">About</NuxtLink>
-            <NuxtLink class="header__nav-link" to="/">Contact</NuxtLink>
+            <NuxtLink class="header__nav-link" to="#articles">Products</NuxtLink>
+            <NuxtLink class="header__nav-link" to="#about">About</NuxtLink>
+            <NuxtLink class="header__nav-link" to="#contact">Contact</NuxtLink>
         </nav>
         
-        <button class="header__cta-btn">Shop Now</button>
+        <a href="https://www.payot.com/en" class="header__cta-link">Shop Now</a>
     </header>
 </template>
 
@@ -21,10 +20,10 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        font-size: 20px;
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
         width: 100%;
         padding-inline: 40px;
-        height: 121px;
+        height: 120px;
         display: flex;
         align-items: center;
 
@@ -68,19 +67,25 @@
                 }
             }
         }
-
-
-
-
-        &__cta-btn{
+        
+        &__cta-link{
             background-color: $black-color;
             color: $white-color;
-            border-radius: 999px;
+            border-radius: 16px;
             border: none;
             margin-left: 48px;
-            font-size: 20px;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             font-weight: 500;
             transition: all 0.3s ease;
+            padding: 12px 28px;
+
+            @include tablet {
+              padding: 16px 32px;
+            }
+
+            @include laptop {
+              padding: 20px 48px;
+            }
 
             &:hover {
                 background-color: $pink-color;
