@@ -16,7 +16,7 @@ const itemsPerPage = computed(() => {
   return 1
 })
 
-itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+// itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
 
 const { 
   currentPage, 
