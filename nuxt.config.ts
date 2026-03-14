@@ -22,5 +22,16 @@ export default defineNuxtConfig({
       }
     }
   },
+  content: {
+    database: {
+      type: 'libsql'
+    }
+  },
+  // Добавьте этот блок, чтобы Vercel правильно обработал зависимости
+  nitro: {
+    externals: {
+      include: ['libsql']
+    }
+  },
   modules: ["@nuxt/image", "nuxt-studio", "@nuxt/content"]
 })
