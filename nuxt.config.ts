@@ -24,7 +24,11 @@ export default defineNuxtConfig({
   },
   content: {
     database: {
-      type: 'libsql'
+      type: 'libsql',
+      // Указываем путь к локальному файлу базы
+      // В режиме разработки это будет .nuxt/content.db, 
+      // а в продакшене — файл в корне или временной папке
+      url: 'file:./content.db' 
     }
   },
   
