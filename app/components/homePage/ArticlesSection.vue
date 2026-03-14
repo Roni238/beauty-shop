@@ -5,20 +5,9 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
-// const itemsPerPage = ref(4)
+const itemsPerPage = ref(4)
 // itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
 
-const isXl = useMediaQuery('(min-width: 1280px)')
-const isLg = useMediaQuery('(min-width: 1024px)')
-const isMd = useMediaQuery('(min-width: 768px)')
-const isSm = useMediaQuery('(min-width: 640px)')
-
-const itemsPerPage = computed(() => {
-  if (isXl.value) return 8
-  if (isMd.value) return 4
-  if (isSm.value) return 2
-  return 1
-})
 const { 
   currentPage, 
   paginatedItems: paginatedPosts,
@@ -44,7 +33,6 @@ const getArticleId = (path: string) => {
       <p class="articles__subtitle">Expert advice, beauty tips, and skincare innovations</p>
     </div>
     <div class="articles__grid">
-      {{ itemsPerPage }}
       <article class="article" v-for="post in paginatedPosts" :key="post.id" >
         <NuxtImg 
           class="article__image" 
