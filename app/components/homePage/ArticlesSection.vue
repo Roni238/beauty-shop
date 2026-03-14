@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { usePagination } from '@/composables/usePagination';
 
-const { data: articles } = await useAsyncData('articles', () => 
-  queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
-)
-console.log('articles value:', articles.value)
+// const { data: articles } = await useAsyncData('articles', () => 
+//   queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
+// )
+// console.log('articles value:', articles.value)
 // const itemsPerPage = ref(4)
 // itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+const { data: articles, error } = await useAsyncData('articles-check', () => 
+  queryCollection('articles').all()
+)
 
+// Если это выведет ошибку в консоль браузера — мы найдем причину
+if (error.value) {
+  console.error('Ошибка коллекции:', error.value.message, error.value.data)
+}
+console.log('Результат запроса:', articles.value)
 const itemsPerPage = ref(4)
 
 // 3. Меняем значение только на клиенте
