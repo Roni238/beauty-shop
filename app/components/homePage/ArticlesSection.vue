@@ -5,9 +5,16 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
-const itemsPerPage = ref(4)
-itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
-
+// const itemsPerPage = ref(4)
+// itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+import { useWindowSize } from '@vueuse/core'
+const { width } = useWindowSize()
+const itemsPerPage = computed(() => {
+  if (width.value >= 1280) return 8
+  if (width.value >= 768) return 4
+  if (width.value >= 640) return 2
+  return 1
+})
 const { 
   currentPage, 
   paginatedItems: paginatedPosts,
