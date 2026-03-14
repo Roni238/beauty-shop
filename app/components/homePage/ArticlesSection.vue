@@ -44,6 +44,7 @@ const getArticleId = (path: string) => {
       <p class="articles__subtitle">Expert advice, beauty tips, and skincare innovations</p>
     </div>
     <div class="articles__grid">
+      {{ itemsPerPage }}
       <article class="article" v-for="post in paginatedPosts" :key="post.id" >
         <NuxtImg 
           class="article__image" 
