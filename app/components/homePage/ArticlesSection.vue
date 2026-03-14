@@ -2,7 +2,7 @@
 import { usePagination } from '@/composables/usePagination';
 
 const { data: articles } = await useAsyncData('articles', () => 
-  queryCollection('articles').select('id', 'title', 'price', 'image', 'createdAt').order('createdAt', 'DESC').all()
+  queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
 const itemsPerPage = ref(4)
