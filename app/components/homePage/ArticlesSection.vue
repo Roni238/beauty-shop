@@ -5,7 +5,7 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'price', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
-
+const itemsPerPage = ref(4)
 itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
 
 const { 
