@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@libsql/client": "^0.17.0",
     "@nuxt/content": "^3.12.0",
     "@nuxt/image": "^1.11.0",
     "@vueuse/core": "^14.2.1",

@@ -27,11 +27,10 @@ export default defineNuxtConfig({
       type: 'libsql'
     }
   },
-  // Добавьте этот блок, чтобы Vercel правильно обработал зависимости
+  
   nitro: {
-    externals: {
-      include: ['libsql']
-    }
+    // Это поможет Nitro правильно упаковать бинарные зависимости libsql для Vercel
+    external: ['@libsql/client']
   },
   modules: ["@nuxt/image", "nuxt-studio", "@nuxt/content"]
 })
