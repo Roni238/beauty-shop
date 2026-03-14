@@ -2,7 +2,7 @@ import { ref, computed, type Ref, unref } from 'vue';
 
 export function usePagination<T>(
   items: Ref<T[]>,
-  itemsPerPage: number | Ref<number> = 8,
+  itemsPerPage: number | Ref<number> = 4,
   maxVisiblePages: number = 5
 ) {
   const currentPage = ref(1)

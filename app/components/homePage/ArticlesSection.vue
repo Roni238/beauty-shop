@@ -14,7 +14,7 @@ const {
   nextPage,
   goToPage,
   visiblePages 
-} = usePagination(computed(() => articles.value || []), itemsPerPage, 5);
+} = usePagination(computed(() => articles.value || []), 4, 5);
 
 const getArticleId = (path: string) => {
   if (!path) return ''
