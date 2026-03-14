@@ -5,16 +5,32 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'price', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 
-const itemsPerPage = ref(4) // Значение по умолчанию
+const itemsPerPage = ref(4)
 
 onMounted(() => {
-  if (process.client) {
+  // Небольшая задержка для избежания проблем с гидратацией
+  setTimeout(() => {
     itemsPerPage.value = window.innerWidth >= 1280 ? 8 
       : window.innerWidth >= 768 ? 4 
       : window.innerWidth >= 640 ? 2 
       : 1
-  }
+  }, 0)
 })
+
+// Используем computed для пагинации
+const allArticles = computed(() => articles.value || [])
+const paginatedPosts = computed(() => {
+  // На сервере показываем все посты
+  if (!process.client) return allArticles.value
+  
+  // На клиенте - с пагинацией
+  const items = itemsPerPage.value
+  const page = currentPage.value
+  const start = (page - 1) * items
+  return allArticles.value.slice(start, start + items)
+})
+
+const currentPage = ref(1)
 
 // itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
 
