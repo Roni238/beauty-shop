@@ -12,8 +12,8 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string().min(10, 'Описание должно быть не менее 10 символов'),
         createdAt: z.string().datetime(),
-        preview: z.string().optional(),
-        image: z.string().url('Должен быть валидный URL').optional()
+        price: z.number().optional(),
+        image: z.string().url('Должен быть валидный URL').optional(),
       })
     })}
 })
