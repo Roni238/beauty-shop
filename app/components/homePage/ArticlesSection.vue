@@ -5,8 +5,21 @@ const { data: articles } = await useAsyncData('articles', () =>
   queryCollection('articles').select('id', 'title', 'preview', 'image', 'createdAt').order('createdAt', 'DESC').all()
 )
 console.log('articles value:', articles.value)
+// const itemsPerPage = ref(4)
+// itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+
 const itemsPerPage = ref(4)
-itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
+
+// 3. Меняем значение только на клиенте
+onMounted(() => {
+  const updateSize = () => {
+    const width = window.innerWidth
+    itemsPerPage.value = width >= 1280 ? 8 : width >= 768 ? 4 : width >= 640 ? 2 : 1
+  }
+  
+  updateSize() // Запускаем при загрузке
+  window.addEventListener('resize', updateSize)
+})
 
 const { 
   currentPage, 
