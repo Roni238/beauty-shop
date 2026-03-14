@@ -7,12 +7,16 @@ const { data: articles } = await useAsyncData('articles', () =>
 
 // const itemsPerPage = ref(4)
 // itemsPerPage.value = window.innerWidth >= 1280 ? 8 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 2 : 1
-import { useWindowSize } from '@vueuse/core'
-const { width } = useWindowSize()
+
+const isXl = useMediaQuery('(min-width: 1280px)')
+const isLg = useMediaQuery('(min-width: 1024px)')
+const isMd = useMediaQuery('(min-width: 768px)')
+const isSm = useMediaQuery('(min-width: 640px)')
+
 const itemsPerPage = computed(() => {
-  if (width.value >= 1280) return 8
-  if (width.value >= 768) return 4
-  if (width.value >= 640) return 2
+  if (isXl.value) return 8
+  if (isMd.value) return 4
+  if (isSm.value) return 2
   return 1
 })
 const { 
